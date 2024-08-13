@@ -1,0 +1,9 @@
+# -*- coding: utf-8; mode: dockerfile; -*-
+FROM docker.io/apache/superset:4.0.2
+LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
+
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+
+COPY local/ /var/opt/superset/
+
+RUN pip install clickhouse-connect==0.8.6 psycopg2==2.9.10

@@ -1,0 +1,14 @@
+---
+env:
+  GITHUB_USERNAME: ${{ github.actor }}
+  GITHUB_PASSWORD: ${{ github.token }}
+on: [push]
+jobs:
+  push:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          make push
+    permissions:
+      packages: write
