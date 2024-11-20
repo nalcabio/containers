@@ -1,0 +1,21 @@
+# -*- coding: utf-8; mode: dockerfile; -*-
+FROM docker.io/library/debian:trixie
+LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
+
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+
+RUN DEBIAN_FRONTEND=noninteractive apt -q update                                \
+    && apt -q dist-upgrade -y                                                   \
+    && apt -q install -y                                                        \
+        curl                                                                    \
+        direnv                                                                  \
+        fuse-overlayfs                                                          \
+        git                                                                     \
+        make                                                                    \
+        nodejs                                                                  \
+        npm                                                                     \
+        podman                                                                  \
+        slirp4netns                                                             \
+        uidmap                                                                  \
+    && apt -q clean                                                             \
+    && rm -rf /var/lib/apt/lists/*
