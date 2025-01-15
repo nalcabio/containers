@@ -6,4 +6,4 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 
 COPY local/ /var/opt/superset/
 
-RUN pip install clickhouse-connect==0.8.11 psycopg2-binary==2.9.10
+RUN pip install clickhouse-connect==0.8.14 psycopg2-binary==2.9.10
