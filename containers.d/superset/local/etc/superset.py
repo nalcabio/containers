@@ -8,3 +8,8 @@ SQLALCHEMY_DATABASE_URI = "postgresql://usuperset:{}@postgres:5432/superset?sslm
     os.environ["POSTGRES_PASSWORD"],
 )
 SQLALCHEMY_TRACK_MODIFICATIONS = False
+
+# https://github.com/apache/superset/issues/30977
+FEATURE_FLAGS = {
+    "ALLOW_ADHOC_SUBQUERY": True
+}
