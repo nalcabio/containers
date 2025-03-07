@@ -6,4 +6,4 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 
 COPY local/ /var/opt/superset/
 
-RUN pip install psycopg2-binary==2.9.10 sqlalchemy-parseable==0.1.5
+RUN pip install psycopg2-binary==2.9.10 sqlalchemy-parseable==0.1.6
