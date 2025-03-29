@@ -18,7 +18,7 @@ has-command-%:
 is-defined-%:
 	@$(if $(value $*),,$(error The environment variable $* is undefined))
 
-CONTAINERS ?= builder superset
+CONTAINERS ?= builder debian superset
 
 .PHONY: build push rm push-rm pull
 build push rm push-rm pull: is-defined-CONTAINERS
