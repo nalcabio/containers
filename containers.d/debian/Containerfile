@@ -10,11 +10,38 @@ RUN DEBIAN_FRONTEND=noninteractive apt -q update                                
         curl                                                                    \
         dumb-init                                                               \
         git                                                                     \
+        iptables                                                                \
         make                                                                    \
         maven                                                                   \
         npm                                                                     \
         openjdk-21-jdk-headless                                                 \
         rlwrap                                                                  \
         unzip                                                                   \
+        usbutils                                                                \
     && apt -q clean                                                             \
     && rm -rf /var/lib/apt/lists/*
+
+ENV CLJ_CONFIG=/var/opt/clojure
+COPY global-deps.edn ${CLJ_CONFIG}/deps.edn
+ENV GITLIBS=${CLJ_CONFIG}/gitlibs
+
+RUN curl -sL https://github.com/clj-kondo/clj-kondo/releases/download/v2025.02.20/clj-kondo-2025.02.20-linux-amd64.zip \
+        -o clj-kondo.zip                                                      \
+    && unzip clj-kondo.zip                                                    \
+    && install clj-kondo /usr/local/bin                                       \
+    && rm -rf clj-kondo*
+
+RUN curl -sL https://github.com/kkinnear/zprint/releases/download/1.2.9/zprintl-1.2.9 \
+        -o zprint                                                               \
+    && install zprint /usr/local/bin                                            \
+    && rm -rf zprint*
+
+RUN bash -c "$(curl -sL https://download.clojure.org/install/linux-install-1.12.0.1530.sh)"
+
+RUN clojure -Sverbose -M -e '(println (str "Using Clojure: " (clojure-version)))'
+
+WORKDIR /mnt/workdir
+
+ENTRYPOINT ["dumb-init", "--"]
+
+CMD ["bash"]
