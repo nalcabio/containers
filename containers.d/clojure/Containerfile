@@ -19,10 +19,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt -q update                                
     && apt -q clean                                                             \
     && rm -rf /var/lib/apt/lists/*
 
-ENV CLJ_CONFIG=/var/opt/clojure
-COPY global-deps.edn ${CLJ_CONFIG}/deps.edn
-ENV GITLIBS=${CLJ_CONFIG}/gitlibs
-
 RUN curl -sL https://github.com/clj-kondo/clj-kondo/releases/download/v2025.02.20/clj-kondo-2025.02.20-linux-amd64.zip \
         -o clj-kondo.zip                                                      \
     && unzip clj-kondo.zip                                                    \
@@ -43,3 +39,10 @@ WORKDIR /mnt/workdir
 ENTRYPOINT ["dumb-init", "--"]
 
 CMD ["bash"]
+
+COPY local/ /var/opt/clojure/
+
+ENV CLJ_CONFIG=/var/opt/clojure
+
+# https://ask.clojure.org/index.php/12414/set-gitlibs-in-deps-edn
+ENV GITLIBS=${CLJ_CONFIG}/gitlibs
