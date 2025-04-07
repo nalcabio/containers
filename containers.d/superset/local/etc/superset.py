@@ -18,23 +18,23 @@ FEATURE_FLAGS = {
 
 # https://flask-appbuilder.readthedocs.io/en/latest/security.html#authentication-oauth
 AUTH_TYPE = AUTH_OAUTH
-AUTH_ROLES_SYNC_AT_LOGIN = True
 AUTH_USER_REGISTRATION = True
+AUTH_USER_REGISTRATION_ROLE = "Gamma"
 
 OAUTH_PROVIDERS = [{
-    "name": "google",
-    "whitelist": ["@nalca.bio"],
     "icon": "fa-google",
-    "token_key": "access_token",
+    "name": "google",
     "remote_app": {
+        "access_token_url": "https://accounts.google.com/o/oauth2/token",
         "api_base_url": "https://www.googleapis.com/oauth2/v2/",
+        "authorize_url": "https://accounts.google.com/o/oauth2/auth",
         "client_kwargs": {
             "scope": "email profile",
         },
-        "request_token_url": None,
-        "access_token_url": "https://accounts.google.com/o/oauth2/token",
-        "authorize_url": "https://accounts.google.com/o/oauth2/auth",
         "client_id": os.environ["SUPERSET_OIDC_CLIENT_ID"],
         "client_secret": os.environ["SUPERSET_OIDC_CLIENT_SECRET"],
+        "request_token_url": None,
     },
+    "token_key": "access_token",
+    "whitelist": ["@nalca.bio"],
 }]
