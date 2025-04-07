@@ -18,6 +18,7 @@ FEATURE_FLAGS = {
 
 # https://flask-appbuilder.readthedocs.io/en/latest/security.html#authentication-oauth
 AUTH_TYPE = AUTH_OAUTH
+AUTH_ROLES_SYNC_AT_LOGIN = True
 AUTH_USER_REGISTRATION = True
 
 OAUTH_PROVIDERS = [{
