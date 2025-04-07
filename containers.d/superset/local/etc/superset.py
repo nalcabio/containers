@@ -1,5 +1,7 @@
 import os
 
+from flask_appbuilder.security.manager import AUTH_OAUTH
+
 MAPBOX_API_KEY = os.environ.get("MAPBOX_API_KEY", default="")
 
 SECRET_KEY = os.environ["SECRET_KEY"]
