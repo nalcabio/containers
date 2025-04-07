@@ -13,3 +13,23 @@ SQLALCHEMY_TRACK_MODIFICATIONS = False
 FEATURE_FLAGS = {
     "ALLOW_ADHOC_SUBQUERY": True
 }
+
+AUTH_TYPE = AUTH_OAUTH
+
+OAUTH_PROVIDERS = [{
+    "name": "google",
+    "whitelist": ["@nalca.bio"],
+    "icon": "fa-google",
+    "token_key": "access_token",
+    "remote_app": {
+        "api_base_url": "https://www.googleapis.com/oauth2/v2/",
+        "client_kwargs": {
+            "scope": "email profile",
+        },
+        "request_token_url": None,
+        "access_token_url": "https://accounts.google.com/o/oauth2/token",
+        "authorize_url": "https://accounts.google.com/o/oauth2/auth",
+        "client_id": os.environ["SUPERSET_OIDC_CLIENT_ID"],
+        "client_secret": os.environ["SUPERSET_OIDC_CLIENT_SECRET"],
+    }
+}]
