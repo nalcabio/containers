@@ -14,7 +14,9 @@ FEATURE_FLAGS = {
     "ALLOW_ADHOC_SUBQUERY": True
 }
 
+# https://flask-appbuilder.readthedocs.io/en/latest/security.html#authentication-oauth
 AUTH_TYPE = AUTH_OAUTH
+AUTH_USER_REGISTRATION = True
 
 OAUTH_PROVIDERS = [{
     "name": "google",
@@ -31,5 +33,5 @@ OAUTH_PROVIDERS = [{
         "authorize_url": "https://accounts.google.com/o/oauth2/auth",
         "client_id": os.environ["SUPERSET_OIDC_CLIENT_ID"],
         "client_secret": os.environ["SUPERSET_OIDC_CLIENT_SECRET"],
-    }
+    },
 }]
