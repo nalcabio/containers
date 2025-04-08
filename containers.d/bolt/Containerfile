@@ -4,6 +4,9 @@ LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
 
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 
+# TODO: Work-around broken puppet apt repo.
+RUN rm -f /etc/apt/sources.list.d/puppet-tools-release.list
+
 RUN DEBIAN_FRONTEND=noninteractive apt -q update                                \
     && apt -q dist-upgrade -y                                                   \
     && apt -q install -y                                                        \
