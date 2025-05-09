@@ -1,6 +1,6 @@
 # -*- coding: utf-8; mode: makefile-gmake; -*-
 
-CONTAINER := nalcabio/containers/clojure
-VERSION := 1.12
+CONTAINER := nalcabio/containers/runner
+VERSION := trixie
 
 include ../containers.mk

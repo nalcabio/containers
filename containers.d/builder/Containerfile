@@ -7,23 +7,43 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive apt -q update                                \
     && apt -q dist-upgrade -y                                                   \
     && apt -q install -y                                                        \
-        catatonit                                                               \
         curl                                                                    \
-        direnv                                                                  \
         dumb-init                                                               \
-        fuse-overlayfs                                                          \
         git                                                                     \
+        javahelper                                                              \
         make                                                                    \
-        nodejs                                                                  \
+        maven                                                                   \
         npm                                                                     \
-        podman                                                                  \
-        slirp4netns                                                             \
-        uidmap                                                                  \
+        openjdk-21-jdk-headless                                                 \
+        rlwrap                                                                  \
+        unzip                                                                   \
     && apt -q clean                                                             \
     && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sL https://github.com/clj-kondo/clj-kondo/releases/download/v2025.04.07/clj-kondo-2025.04.07-linux-amd64.zip \
+        -o clj-kondo.zip                                                      \
+    && unzip clj-kondo.zip                                                    \
+    && install clj-kondo /usr/local/bin                                       \
+    && rm -rf clj-kondo*
+
+RUN curl -sL https://github.com/kkinnear/zprint/releases/download/1.2.9/zprintl-1.2.9 \
+        -o zprint                                                               \
+    && install zprint /usr/local/bin                                            \
+    && rm -rf zprint*
+
+RUN bash -c "$(curl -sL https://download.clojure.org/install/linux-install-1.12.0.1530.sh)"
+
+RUN clojure -Sverbose -M -e '(println (str "Using Clojure: " (clojure-version)))'
 
 WORKDIR /mnt/workdir
 
 ENTRYPOINT ["dumb-init", "--"]
 
 CMD ["bash"]
+
+COPY local/ /var/opt/clojure/
+
+ENV CLJ_CONFIG=/var/opt/clojure
+
+# https://ask.clojure.org/index.php/12414/set-gitlibs-in-deps-edn
+ENV GITLIBS=${CLJ_CONFIG}/gitlibs
