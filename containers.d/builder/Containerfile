@@ -8,6 +8,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt -q update                                
     && apt -q dist-upgrade -y                                                   \
     && apt -q install -y                                                        \
         curl                                                                    \
+        dh-exec                                                                 \
         dumb-init                                                               \
         git                                                                     \
         javahelper                                                              \
