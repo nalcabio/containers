@@ -4,6 +4,6 @@ LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
 
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 
-RUN pip install authlib==1.5.2 psycopg2-binary==2.9.10 elasticsearch-dbapi==0.2.11
+RUN pip install authlib==1.6.0 psycopg2-binary==2.9.10 elasticsearch-dbapi==0.2.11
 
 COPY local/ /var/opt/superset/
