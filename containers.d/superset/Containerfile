@@ -1,9 +1,16 @@
 # -*- coding: utf-8; mode: dockerfile; -*-
-FROM docker.io/apache/superset:4.1.2
+FROM docker.io/apache/superset:5.0.0rc3
 LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
 
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 
-RUN pip install authlib==1.6.0 psycopg2-binary==2.9.10 elasticsearch-dbapi==0.2.11
+# https://superset.apache.org/docs/installation/docker-builds/#building-your-own-production-docker-image
+
+USER root
+
+RUN . /app/.venv/bin/activate \
+    && uv pip install -n authlib==1.6.0 elasticsearch-dbapi==0.2.11 psycopg2-binary==2.9.10
 
 COPY local/ /var/opt/superset/
+
+USER superset
