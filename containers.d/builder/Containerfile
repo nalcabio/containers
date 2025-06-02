@@ -32,7 +32,7 @@ RUN curl -sL https://github.com/kkinnear/zprint/releases/download/1.3.0/zprintl-
     && install zprint /usr/local/bin                                            \
     && rm -rf zprint*
 
-RUN bash -c "$(curl -sL https://download.clojure.org/install/linux-install-1.12.0.1530.sh)"
+RUN bash -c "$(curl -sL https://download.clojure.org/install/linux-install-1.12.1.1538.sh)"
 
 RUN clojure -Sverbose -M -e '(println (str "Using Clojure: " (clojure-version)))'
 
