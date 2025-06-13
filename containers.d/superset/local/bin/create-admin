@@ -20,6 +20,4 @@ function on_error {
 
 trap 'on_error $? $LINENO' ERR
 
-superset db upgrade
-
-superset init
+superset fab create-admin "$@"

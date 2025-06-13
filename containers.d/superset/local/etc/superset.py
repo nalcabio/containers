@@ -1,3 +1,5 @@
+# -*- coding: utf-8; mode: python -*-
+
 import os
 
 from flask_appbuilder.security.manager import AUTH_OAUTH
