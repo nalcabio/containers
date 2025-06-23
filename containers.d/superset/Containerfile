@@ -1,5 +1,5 @@
 # -*- coding: utf-8; mode: dockerfile; -*-
-FROM docker.io/apache/superset:5.0.0rc4
+FROM docker.io/apache/superset:5.0.0
 LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
 
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
