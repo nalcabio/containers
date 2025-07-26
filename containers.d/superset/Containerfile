@@ -9,7 +9,7 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 USER root
 
 RUN . /app/.venv/bin/activate \
-    && uv pip install -n authlib==1.6.0 elasticsearch-dbapi==0.2.11 pillow==11.3.0 psycopg2-binary==2.9.10
+    && uv pip install -n authlib==1.6.1 elasticsearch-dbapi==0.2.11 pillow==11.3.0 psycopg2-binary==2.9.10
 
 COPY local/ /var/opt/superset/
 
