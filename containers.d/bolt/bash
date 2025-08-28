@@ -1,7 +1,0 @@
-#!/bin/sh -e
-# -*- coding: utf-8; mode: sh -*-
-REGISTRY=ghcr.io
-CONTAINER=nalcabio/containers/bolt
-VERSION=4
-CMD=$(basename $0)
-podman run --rm -it -v $PWD:/mnt/workdir $REGISTRY/$CONTAINER:$VERSION $CMD "$@"
