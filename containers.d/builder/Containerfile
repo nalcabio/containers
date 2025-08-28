@@ -7,9 +7,9 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 RUN DEBIAN_FRONTEND=noninteractive apt -q update                                \
     && apt -q dist-upgrade -y                                                   \
     && apt -q install -y                                                        \
+        catatonit                                                               \
         curl                                                                    \
         dh-exec                                                                 \
-        dumb-init                                                               \
         git                                                                     \
         javahelper                                                              \
         make                                                                    \
@@ -38,7 +38,7 @@ RUN clojure -Sverbose -M -e '(println (str "Using Clojure: " (clojure-version)))
 
 WORKDIR /mnt/workdir
 
-ENTRYPOINT ["dumb-init", "--"]
+ENTRYPOINT ["catatonit", "--"]
 
 CMD ["bash"]
 

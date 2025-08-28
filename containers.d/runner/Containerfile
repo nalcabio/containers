@@ -10,7 +10,7 @@ RUN DEBIAN_FRONTEND=noninteractive apt -q update                                
         catatonit                                                               \
         curl                                                                    \
         direnv                                                                  \
-        dumb-init                                                               \
+        catatonit                                                               \
         fuse-overlayfs                                                          \
         git                                                                     \
         make                                                                    \
@@ -24,6 +24,6 @@ RUN DEBIAN_FRONTEND=noninteractive apt -q update                                
 
 WORKDIR /mnt/workdir
 
-ENTRYPOINT ["dumb-init", "--"]
+ENTRYPOINT ["catatonit", "--"]
 
 CMD ["bash"]
