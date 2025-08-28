@@ -1,25 +1,27 @@
 #!/usr/bin/env bash
-# -*- mode: sh; coding: utf-8; tab-width: 4; indent-tabs-mode: nil -*-
+# -*- coding: utf-8; mode: sh -*-
 set -euo pipefail
 IFS=$'\n\t'
-errcode=0
-readonly script="$(readlink -f "$0")"
 
-function on_exit {
-    errcode=${1:-$errcode}
-    exit $errcode
+THIS="$(readlink -f "$0")"
+readonly THIS
+
+# HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# readonly HERE
+
+function on_exit() {
+  errcode="$1"
 }
 
-trap on_exit EXIT
+trap 'on_exit $?' EXIT
 
-function on_error {
-    errcode=$1
-    linenum=$2
-    echo "[ERROR] script: $script errcode: $errcode linenum: $linenum"
+function on_error() {
+  errcode="$1"
+  linenum="$2"
+  echo 1>&2 "[ERROR] ${THIS}: errcode: ${errcode} linenum: ${linenum}"
 }
 
-trap 'on_error $? $LINENO' ERR
+trap 'on_error $? ${LINENO}' ERR
 
 superset db upgrade
-
 superset init
