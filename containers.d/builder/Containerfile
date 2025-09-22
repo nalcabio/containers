@@ -44,9 +44,9 @@ ENTRYPOINT ["catatonit", "--"]
 
 CMD ["bash"]
 
-COPY local/ /var/opt/clojure/
+COPY builder/ /var/opt/builder/
 
-ENV CLJ_CONFIG=/var/opt/clojure
+ENV CLJ_CONFIG=/var/opt/builder
 
 # https://ask.clojure.org/index.php/12414/set-gitlibs-in-deps-edn
 ENV GITLIBS=${CLJ_CONFIG}/gitlibs
