@@ -1,0 +1,26 @@
+# -*- coding: utf-8; mode: dockerfile; -*-
+FROM docker.io/library/debian:trixie
+LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
+
+ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
+
+RUN useradd mosquitto -u 1000 -U -d /var/lib/mosquitto -M -s /usr/sbin/nologin
+
+RUN DEBIAN_FRONTEND=noninteractive apt -q update                                \
+    && apt -q dist-upgrade -y                                                   \
+    && apt -q install -y                                                        \
+        catatonit                                                               \
+        mosquitto                                                               \
+    && apt -q clean                                                             \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /mnt/workdir
+
+ENTRYPOINT ["catatonit", "--"]
+
+CMD ["bash"]
+
+# This is bonkers, but this appears to solve file permission errors when running
+# a rootless container. `podman run --userns keep-id ...` is still required when
+# using host mounted volumes. YMMV
+RUN cp -a /usr/sbin/mosquitto /usr/bin/mosquitto

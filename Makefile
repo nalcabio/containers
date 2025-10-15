@@ -18,7 +18,7 @@ has-command-%:
 is-defined-%:
 	@$(if $(value $*),,$(error The environment variable $* is undefined))
 
-CONTAINERS ?= builder release runner superset
+CONTAINERS ?= builder release runner superset mosquitto
 
 .PHONY: build push rm push-rm pull
 build push rm push-rm pull: is-defined-CONTAINERS
