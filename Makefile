@@ -22,6 +22,6 @@ CONTAINERS ?= builder release runner superset mosquitto
 
 .PHONY: build push rm push-rm pull
 build push rm push-rm pull: is-defined-CONTAINERS
-	@for CONTAINER in $(CONTAINERS); do                                     \
-	  $(MAKE) -C containers.d/$$CONTAINER "$@";                             \
+	@for CONTAINER in $(CONTAINERS); do                                          \
+	  $(MAKE) -C containers.d/$$CONTAINER "$@";                                  \
 	done;

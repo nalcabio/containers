@@ -8,7 +8,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: |
+      - name: Build and push container images
+        run: |
+          sudo apt install -y qemu-user-binfmt
           make push
     permissions:
       packages: write

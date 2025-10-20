@@ -6,7 +6,8 @@ ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 
 RUN useradd mosquitto -u 1000 -U -d /var/lib/mosquitto -M -s /usr/sbin/nologin
 
-RUN DEBIAN_FRONTEND=noninteractive apt -q update                                \
+RUN export DEBIAN_FRONTEND=noninteractive                                       \
+    && apt -q update                                                            \
     && apt -q dist-upgrade -y                                                   \
     && apt -q install -y                                                        \
         catatonit                                                               \

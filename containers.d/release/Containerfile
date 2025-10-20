@@ -4,7 +4,8 @@ LABEL maintainer="Tom Vaughan <tom@nalca.bio>"
 
 ENV LC_ALL=C.UTF-8 LANG=C.UTF-8
 
-RUN DEBIAN_FRONTEND=noninteractive apt -q update                                \
+RUN export DEBIAN_FRONTEND=noninteractive                                       \
+    && apt -q update                                                            \
     && apt -q dist-upgrade -y                                                   \
     && apt -q install -y                                                        \
         ca-certificates                                                         \
