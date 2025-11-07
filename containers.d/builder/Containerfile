@@ -24,7 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive                                       
     && apt -q clean                                                             \
     && rm -rf /var/lib/apt/lists/*
 
-RUN curl -sL https://github.com/clj-kondo/clj-kondo/releases/download/v2025.07.28/clj-kondo-2025.07.28-linux-amd64.zip \
+RUN curl -sL https://github.com/clj-kondo/clj-kondo/releases/download/v2025.10.23/clj-kondo-2025.10.23-linux-amd64.zip \
         -o clj-kondo.zip                                                      \
     && unzip clj-kondo.zip                                                    \
     && install clj-kondo /usr/local/bin                                       \
