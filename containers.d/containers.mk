@@ -26,7 +26,7 @@ login: is-defined-GITHUB_USERNAME is-defined-GITHUB_PASSWORD is-defined-REGISTRY
 
 .PHONY: build
 build: is-defined-REGISTRY is-defined-CONTAINER is-defined-VERSION login
-	@podman build --platform linux/amd64,linux/arm64 --manifest $(REGISTRY)/$(CONTAINER):$(VERSION) -f Containerfile .
+	@podman buildx build --platform linux/amd64,linux/arm64 --manifest $(REGISTRY)/$(CONTAINER):$(VERSION) -f Containerfile .
 
 .PHONY: push
 push: build
