@@ -11,13 +11,13 @@ RUN export DEBIAN_FRONTEND=noninteractive                                       
         catatonit                                                               \
         curl                                                                    \
         direnv                                                                  \
-        catatonit                                                               \
         fuse-overlayfs                                                          \
         git                                                                     \
         make                                                                    \
         nodejs                                                                  \
         npm                                                                     \
         podman                                                                  \
+        qemu-user-binfmt                                                        \
         slirp4netns                                                             \
         uidmap                                                                  \
     && apt -q clean                                                             \
