@@ -13,11 +13,6 @@ SQLALCHEMY_DATABASE_URI = "postgresql://usuperset:{}@postgres:5432/superset?sslm
 )
 SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-# https://github.com/apache/superset/issues/30977
-FEATURE_FLAGS = {
-    "ALLOW_ADHOC_SUBQUERY": True
-}
-
 # https://flask-appbuilder.readthedocs.io/en/latest/security.html#authentication-oauth
 AUTH_TYPE = AUTH_OAUTH
 AUTH_USER_REGISTRATION = True
