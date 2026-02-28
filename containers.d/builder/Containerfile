@@ -24,7 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive                                       
     && apt -q clean                                                             \
     && rm -rf /var/lib/apt/lists/*
 
-RUN bash -c "$(curl -sL https://download.clojure.org/install/linux-install-1.12.4.1602.sh)"
+RUN bash -c "$(curl -sL https://download.clojure.org/install/linux-install-1.12.4.1607.sh)"
 
 RUN clojure -Sverbose -M -e '(println (str "Using Clojure: " (clojure-version)))'
 
