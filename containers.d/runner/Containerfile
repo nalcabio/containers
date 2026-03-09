@@ -18,6 +18,7 @@ RUN export DEBIAN_FRONTEND=noninteractive                                       
         npm                                                                     \
         podman                                                                  \
         qemu-user-binfmt                                                        \
+        ruby                                                                    \
         slirp4netns                                                             \
         uidmap                                                                  \
     && apt -q clean                                                             \
