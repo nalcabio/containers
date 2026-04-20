@@ -28,7 +28,7 @@ RUN bash -c "$(curl -sL https://download.clojure.org/install/linux-install-1.12.
 
 RUN clojure -Sverbose -M -e '(println (str "Using Clojure: " (clojure-version)))'
 
-RUN curl -sL https://github.com/clj-kondo/clj-kondo/releases/download/v2026.01.19/clj-kondo-2026.01.19-linux-amd64.zip \
+RUN curl -sL https://github.com/clj-kondo/clj-kondo/releases/download/v2026.04.15/clj-kondo-2026.04.15-linux-amd64.zip \
         -o clj-kondo.zip                                                      \
     && unzip clj-kondo.zip                                                    \
     && install clj-kondo /usr/local/bin                                       \
