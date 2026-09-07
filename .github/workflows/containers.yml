@@ -1,3 +1,5 @@
+# -*- coding: utf-8; mode: yaml -*-
+
 ---
 env:
   GITHUB_USERNAME: ${{ github.actor }}
@@ -5,13 +7,13 @@ env:
 on: [push]
 jobs:
   push:
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-26.04
     steps:
       - uses: actions/checkout@v4
       - name: Build and push container images
         run: |
           sudo apt update
-          sudo apt install -y qemu-user-static
+          sudo apt install -y qemu-user-binfmt
           make push
     permissions:
       packages: write
